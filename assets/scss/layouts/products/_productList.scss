@@ -70,23 +70,50 @@
         position:absolute;
         display:flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-end;
         align-items: center;
         text-align: center;
-        top: 45%;
+        top: 57%;
         right:0;
+        height:51px;
+
         .img{
-            width:42px;
+            width:53px;
+            img{
+                padding:0 !important;
+            }
         }
         p{
-            font: size 14px;
+            font-size: 12px;
             background-color:red;
             color:white;
             margin-top:2px;
             padding:0px 5px;
+            margin-bottom:0;
         }
         @media(max-width:1074px){
-            top:40%;
+            top:47%;
+        }
+        @media(max-width:991px){
+            top:53%;
+            right:8px;
+            height:57px;
+        }
+        @media(max-width:550px){
+            top:44%;
+            right:-33px;
+            height:57px;
+            .img{
+                width:36px;
+            }
+            p{
+                font-size:8px;
+            }
+        }
+        @media(max-width:414px){
+            top:56%;
+            right:4px;
+
         }
     }
     @include breakpoint("small") {
