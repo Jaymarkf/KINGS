@@ -3,261 +3,95 @@ products:
     new:
         limit: {{theme_settings.homepage_new_products_count}}
     featured:
-        limit: {{theme_settings.homepage_featured_products_count}}
+        limit: 100
     top_sellers:
         limit: {{theme_settings.homepage_top_products_count}}
 carousel: {{theme_settings.homepage_show_carousel}}
 blog:
     recent_posts:
-        limit: {{theme_settings.homepage_blog_posts_count}}
+        limit: 2
+        summary: 200
 ---
 {{#partial "hero"}}
     
 {{/partial}}
 
 {{#partial "page"}}
+{{#each shipping_messages}}
+     {{> components/common/alert-info message}}
+{{/each}}
+
 <style>
-    p{
-        font-family:sans-serif !important;
+   /* .body.home{
+	   overflow-x:hidden;
+	   position:relative;
+   } */
+      a.tab-title{
+	    outline:0 !important;
+      }
+    .maincontainer-compare{
+	    display:none;
     }
-    span.animation-element{
-        font-family:sans-serif !important;
+    .main .home{
+	    margin-bottom:0 !important;
     }
+    .value-proposition{
+	    margin-top:0;
+    }
+    .newsletter-home-section{
+	    padding-top:0;
+    }
+     /* overide the slick style */
+  
 </style>
-    {{#each shipping_messages}}
-        {{> components/common/alert-info message}}
-    {{/each}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 <div class="main full">
-    <div class="section-top">
-        <img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/labor-day-banner-static.png?t=1630459540&_gl=1*1jqtgqm*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMDQ1NjM5Ni42Ny4xLjE2MzA0NTk1NTEuMzg." alt="">
-    </div>    
-    <div class="home-first-section relative">
-         <img class="animation-element slide-up delay-300" src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/appliance.png')}}">
-        <div class="home-appliance-text">
-        <h1 class="animation-element slide-left">Appliances</h1>
-        <span class="animation-element slide-left">We offer the best selection from the most trusted names in home appliances such as Bosch, Frigidaire, KitchenAid, Maytag, and Whirlpool, among others. From gas ranges and cooktops to dishwashers and laundry dryers, King’s got it all for you.</span>
-        </div>
-    </div>
-    <div class="shop-now-white-section">
-        <div class="home-appliance-button">
-        <h2 class="animation-element slide-left delay-300">Top name brands in one place.
-        </h2>
-        <a class="animation-element wiggle duration-2000 first-section-button" href="/appliances/">SHOP APPLIANCES</a>
-        </div>
-    </div>
-
-
-
-    <div class="home-second-section relative">
-       {{#if carousel}}
-        {{> components/carousel arrows=theme_settings.homepage_show_carousel_arrows}}
-    {{/if}}
-    </div>
-    <div class="home-third-section relative">
-        <div class="brand-logo">
-            
-        <div class="animation-element slide-right logo-img">
-        <a href="/bosch/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/bosch.png')}}"></a>
-        </div>
-        
-        <div class="animation-element slide-right logo-img">
-        <a href="/kitchenaid/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/kitchenaid.png')}}"></a>
-        </div>
+	
+    {{> components/page/home/header-banner-slick}}
+    {{> components/page/home/badge-feature}}
     
-        <div class="animation-element slide-right logo-img">
-        <a href="/lg/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/lg.png')}}"></a>
-        </div>
-            
-        <div class="animation-element slide-right logo-img">
-        <a href="/maytag/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/maytag.png')}}"></a>
-        </div>
-            
-        <div class="animation-element slide-right logo-img">
-        <a href="/whirlpool/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/whirlpool.png')}}"></a>
-        </div>
+    <div class="static-banner">
+        <!-- <div class="col-md-7 col">
+            <img class="lazyload res" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/lg-banner.png?t=1632275303&_gl=1*72dx34*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjI3NTI5Mi4xMjMuMS4xNjMyMjc1MzA1LjQ3" alt="">
+        </div> -->
 
-        </div>
-    </div>
-
-    
-    
-    <div class="home-fourth-section relative">
-        <img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/Bedding-home.jpg')}}">
-        <img class="fourth-section-overlap animation-element slide-down delay-400" src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/bed.png')}}">
-        <div class="home-bedding-text">
-           <h1 class="animation-element slide-right delay-800">Sleep Products and Accessories</h1>
-        <span class="animation-element slide-right delay-800">Shop for your next mattress by comfort level, by size, or by material with King’s! Browse our wide range of bedding products from the industry’s top brands: Sealy, Serta, Simmons, and Tempur-Pedic. Your good night’s sleep is just one checkout away.</span>
-        </div>
-        <div class="home-bedding-button">
-        <h2 class="animation-element slide-right delay-800">Discover your comfort zone.
-</h2>
-        <a class="animation-element wiggle duration-2000 fourth-section-button" href="/bedding/">SHOP BEDDING</a>
-        </div>
-    </div>
-     <div class="home-fourth-logo-section relative">
-        <div class="brand-logo">
-            
-        <div class="animation-element slide-left logo-img">
-        <a href="/serta/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/serta.png')}}"></a>
-        </div>
-        
-        <div class="animation-element slide-left logo-img">
-        <a href="/simmons/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/simmons.png')}}"></a>
-        </div>
-        
-        <div class="animation-element slide-left logo-img">
-        <a href="/tempur-pedic/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/tempur.png')}}"></a>
-        </div>
-    
-        <div class="animation-element slide-left logo-img">
-        <a href="/sealy/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/sealy.png')}}"></a>
-        </div>
-
-        </div>
-    </div>
-
-    <div class="section-container relative">
-        <div class="video-col col-vid responsive">
-            <div class="items res">
-                <iframe src="https://player.vimeo.com/video/591652814?h=df292cd91b&title=0&byline=0&portrait=0" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="video-col text-left responsive">
-            <div class="items">
-                <p class="gift-title">Labor Day Sale 2021</p>
-                <h3>HURRY! VISIT THE NEAREST KING'S STORE BEFORE SALE ENDS OR STOCKS RUN OUT!</h3>
-                <div class="row-small">
-                    <p><a href="/location/">Evansville</a> | <a href="/location/">Madisonville</a> | <a href="/location/">Owensboro</a> | <a href="/location/">Princeton</a></p>
-                </div>
-                <a href="/labor-day-sale/" class="fourth-section-button">
-                    LEARN MORE
-                </a>
-            </div>
+        <div class="col-md-6 col col-left" data-aos="fade-up">
+	        <img id="bg-static" class="lazyload" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/gc-background.png?t=1630378203&_gl=1*6v9x1a*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjcyMzE0MS4xMzguMS4xNjMyNzIzOTM0LjMw" alt="">
+		<div class="static-promotion-absolute">
+			<div class="cols free">
+				<h1 class="title-static">KING'S GREAT BUYS PLUS</h1>
+				<p>EVANSVILLE</p>
+				<img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/free-ribbon.png?t=1632799911&_gl=1*z5c5k7*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjc5NzY3Ny4xNDEuMS4xNjMyNzk5MTU5LjQ1" class="lazyload" alt="">
+				<h1 class="product-name-title">2 Cooling Pillows Luxury Sheets Power Base Upgrade</h1>
+				<i>*when purchasing a mattress and box spring offer valid through <b>September 30</b></i>
+				<a href="/locations">GET DIRECTIONS</a>
+			</div>
+			<div class="cols bed">
+				<img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/mattress-image.png?t=1632799913&_gl=1*z5c5k7*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjc5NzY3Ny4xNDEuMS4xNjMyNzk5MTU5LjQ1" alt="" class="lazyload">
+			</div>
+		</div>
+	</div>
+        <div class="col-md-6 flex-column col">
+            <a href="/maytag"><img class="lazyload mb-3" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/kings-banner-maytag.jpg" alt=""></a>
+            <a href="whirlpool"><img class="lazyload" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/theme_images/Kings_Banner-Whirlpool.png" alt=""></a>
         </div>
     </div>
 
 
+{{> components/page/home/popular-product-tabs}}
 
-    <div class="home-fifth-section relative">
-        <img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/Electornics.jpg')}}">
-        <img class="fifth-section-overlap animation-element slide-up delay-500" src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/tv.png')}}">
-        <div class="home-electronics-text">
-        <h1 class="animation-element slide-left">Electronics and Entertainment
-        </h1>
-        <span class="animation-element slide-left">Indulge your senses with our eye-popping smart TVs and rich-sounding home theater setups from the world’s top-selling brands. Whether you're looking for an OLED TV from LG, a QLED TV from Samsung or the latest speaker from Klipsch, King’s got you covered
-        </span>
-        </div>
-        <div class="home-electronics-button">
-        <h2 class="animation-element slide-down">Indulge in cutting-edge tech.
-</h2>
-        <a class="animation-element wiggle duration-2000 fifth-section-button" href="/electronics/">SHOP ELECTRONICS</a>
-        </div>
-    </div>
+{{> components/page/home/promotion}}
 
-    <div class="section-container relative">
-        <div class="video-col col-vid responsive">
-            <div class="items res">
-                <iframe src="https://player.vimeo.com/video/591651182?h=637b7464de&title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="video-col text-left responsive">
-            <div class="items">
-                <p class="gift-title">Labor Day Sale 2021</p>
-                <h3>HURRY! VISIT THE NEAREST KING'S STORE BEFORE SALE ENDS OR STOCKS RUN OUT!</h3>
-                <div class="row-small">
-                    <p><a href="/location/">Evansville</a> | <a href="/location/">Madisonville</a> | <a href="/location/">Owensboro</a> | <a href="/location/">Princeton</a></p>
-                </div>
-                <a href="/labor-day-sale/" class="fourth-section-button">
-                    LEARN MORE
-                </a>
-            </div>
-        </div>
-    </div>
+{{> components/page/home/blogs}}
 
 
-
-    <div class="home-fifth-logo-section relative">
-        <div class="brand-logo">
-            
-        <div class="animation-element slide-right logo-img">
-        <a href="/samsung/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/samsung.png')}}"></a>
-        </div>
-        
-        <div class="animation-element slide-right logo-img">
-        <a href="/lg/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/lg.png')}}"></a>
-        </div>
-        
-        <div class="animation-element slide-right logo-img">
-        <a href="/sony/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/sony.png')}}"></a>
-        </div>
-        
-        <div class="animation-element slide-right logo-img">
-        <a href="/klipsch/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/brands/Klipsch.png')}}"></a>
-        </div>
-
-        </div>
-    </div>
-      <div class="home-sixth-section relative">
-            <img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/Furniture.jpg')}}">
-            <img class="sixth-section-overlap animation-element slide-left delay-500" src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/sofa.png')}}">
-            <div class="home-furniture-text">
-              <h1 class="animation-element slide-right">Home Furnishings</h1>
-          <span class="animation-element slide-right">Furnish your dream house with King’s extensive catalog of high-quality furniture. Browse by room type or shop by function, from vanity tables by Liberty Furniture to reclining sofas by Home Stretch; decorating your home doesn’t get any better than with King’s.
-</span>
-            </div> 
-            <div class="home-furniture-button">
-          <h2 class="animation-element slide-right">Be inspired with modern designs.
-</h2>
-          <a class="animation-element wiggle duration-2000 sixth-section-button" href="/furniture/">SHOP FURNITURE</a>
-          </div>
-    
-    </div>
-    <div class="home-sixth-logo-section relative">
-        <div class="brand-logo">
-            
-        <div class="animation-element slide-left logo-img">
-        <a href="/catnapper/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/catnapper.png')}}"></a>
-        </div>
-        
-        <div class="animation-element slide-left logo-img">
-        <a href="/hillsdale-furniture/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/hillsdale.png')}}"></a>
-        </div>
-        
-        <div class="animation-element slide-left logo-img">
-        <a href="/homestretch/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/home-stretch.png')}}"></a>
-        </div>
-    
-       
-            
-        
-            
-        <div class="animation-element slide-left logo-img">
-        <a href="/southern-motion/"><img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/southern.png')}}"></a>	
-        </div>
-
-        </div>
-    </div>
-    <div class="home-seventh-section relative">
-    <div class="homepage-about row relative">
-        <div class="col-lg-6 col-md-6 col-sm-12 about-us-homepage">
-            <div>
-                <div>
-           <h1>About Us</h1>
-                <p>King’s Great Buys Plus is a leading retailer of electronics, appliances, beddings, and furniture since the opening of its first brick-and-mortar store in 1983. Three years later, the Great Buys Plus Corporation was founded in order to establish partnerships with other retailers and create a vast retail network. Today, with more than 40 stores spanning the Midwest, the King’s brand has become synonymous with high-quality products and excellent service. In early 2019, King’s launched its expanded online store to cater to customers from all over the country and beyond.</p>
-                <a href="/about-us/" class="more-about">More About Us</a>
-            </div>
-                </div>
-        </div>    
-        <div class="col-lg-6 col-md-6 col-sm-12 img-homepage">
-            <div class="about-image">
-                <img src="{{getImage image 'thumb_size' (cdn 'assets/img/homepage/about-us.png')}}">
-            </div>
-        
-        </div>
-    </div>
-    </div>
+   
 </div>
+
+<!-- popup -->
+
+
 
 
 <script type="text/javascript">
@@ -289,29 +123,119 @@ blog:
 		$window.on('scroll resize', check_if_in_view);
 		$window.trigger('scroll');
 
-		$(document).ready(function() {
-			var stickyname = '.header-bottom';
-			if($(stickyname).length > 0){
-		   	var stickyNavTop = $(stickyname).offset().top;
-		   	var stickyNav = function(){
-			    var scrollTop = $(window).scrollTop(); 
+$(document).ready(function() {
 
-			    if (scrollTop > stickyNavTop) { 
-			        $(stickyname).addClass('sticky');
-			    } else {
-//			        $(stickyname).removeClass('sticky'); 
-			    }
-			};
+	$('body').append('<div class="popup-container" style="margin-bottom:50px;bottom:20%;">'+
+		'<div class="pop">'+
+			'<img class="lazyload" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/popup-question-mark-icon.png?t=1632885982&_gl=1*mjue79*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjg4NTkzMi4xNDYuMS4xNjMyODg1OTg1Ljc." alt="">'+
+			'<div class="pop-blurb">'+
+				'<p>MISSING SOME ITEMS?</p>'+
+				'<span>Learn more about the effects of COVID-19 on our supplies here.</span>'+
+			'</div>'+
+		'</div>'+
+		'<div class="close">x</div>'+
+	'</div>'+
+	'<div class="popup-container">'+
+		'<div class="pop">'+
+			'<img class="lazyload" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/popup-megaphone-icon.png?t=1632885983&_gl=1*mjue79*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjg4NTkzMi4xNDYuMS4xNjMyODg1OTg1Ljc." alt="">'+
+			'<div class="pop-blurb">'+
+				'<p>LIMITED TIME DEAL!</p>'+
+				'<span><b>FREE</b> Bundle with Mattress and Box Spring puchase!</span>'+
+				'<i>*Restrictions Apply</i>'+
+			'</div>'+
+		'</div>'+
+		'<div class="close">x</div>'+
+	'</div>');
+	var stickyname = '.header-bottom';
+	if($(stickyname).length > 0){
+		var stickyNavTop = $(stickyname).offset().top;
+		var stickyNav = function(){
+		var scrollTop = $(window).scrollTop(); 
+		if (scrollTop > stickyNavTop) { 
+			$(stickyname).addClass('sticky');
+		} else {
+			$(stickyname).removeClass('sticky'); 
+		}
+		}
+		stickyNav();
+		$(window).scroll(function() {
 			stickyNav();
-			$(window).scroll(function() {
-				stickyNav();
-			});
-			}
 		});
-		
+	}
+
+
+ $('.slick-banner').slick({dots:true,infinite:true,speed:300,fade:true,cssEase:'linear'});
+
+//  animate the popup 
+  setTimeout(function(){
+	  var l = $('.body').width();
+	var left = l - 550;
+	$('.popup-container').animate({left: left+'px'});
+	
+	setTimeout(function(){
+		$('.popup-container').animate({left:'100%',opacity:'0'});
+	},10000);
+
+  },1000);
+
+
+  $('.popup-container').find('.close').click(function(){
+	$(this).parent().animate({left:'100%',opacity:'0'});
+  });
+
+
+});
+
+
+
+
 		
 		
 		
 		</script>
-{{/partial}}
-{{> layout/home-base}}
+
+<script src ="https://form.jotform.com/static/feedback2.js" type="text/javascript"></script><script type="text/javascript">
+	// let product = '';
+	// let model = '';
+       
+	// $('.btn-ask').on('click',function(){
+       
+	//    product = $(this).attr('product-name');
+	//    model = $(this).attr('model');
+       
+	
+       
+	// });
+	// for category jotform 
+       //remove the attribute and add it again to refresh the element everytime the jotform was close
+	  $('.btn-ask').on('click',function(){
+	    $('.btn-ask').removeAttr('requested');
+	    $(this).attr('requested','');
+	  });
+       
+       
+	//get the value of button and give it to jotform after click before closing the jotform.
+	var jotform = new JotformFeedback({
+	formId: '201911524199051',
+	base: 'https://form.jotform.com/',
+	windowTitle: 'Request Quotation',
+	background: '#d22229',
+	fontColor: '#FFFFFF',
+	type: '0',
+	iframeParameters:
+	{
+	  'productDetails' : function(){
+	      return $('[requested]').attr('product_name');
+	  },
+	  'Model_No'  : function(){
+	      return $('[requested]').attr('model');
+	  }
+	},
+	height: 600,
+	width: 600,
+	openOnLoad: false
+	});
+		
+       </script>
+       {{/partial}}
+       {{> layout/home-base}}

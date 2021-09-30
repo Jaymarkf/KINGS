@@ -1,4 +1,4 @@
-<h5>{{lang 'newsletter.subscribe'}}</h5>
+<h5 style="text-transform:unset">{{lang 'newsletter.subscribe'}}</h5>
 
 
 <form class="form" action="{{urls.subscribe.action}}" method="post">
@@ -7,9 +7,8 @@
         <input type="hidden" name="nl_first_name" value="bc">
         <input type="hidden" name="check" value="1">
         <div class="form-field">
-            <label class="form-label is-srOnly" for="nl_email">{{lang 'common.email_address'}}</label>
             <div class="form-prefixPostfix wrap">
-                <input class="form-input" id="nl_email" name="nl_email" type="email" value="{{customer.email}}" placeholder="Your Email">
+                <input class="form-input" id="nl_email" name="nl_email" type="email" value="{{customer.email}}" placeholder="Enter your email address here">
                 <input class="button button--primary form-prefixPostfix-button--postfix" type="submit" value="{{lang 'newsletter.subscribe_submit'}}">
             </div>
             {{#if settings.show_newsletter_summary }}

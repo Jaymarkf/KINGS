@@ -23,9 +23,16 @@ category:
 <!-- test css override -->
 <style>
 	.container.categ-container{ max-width: 100% !important;}
-	.body.categ-body { margin:0; }
+	.body.categ-body { margin:0;
 	
-
+	    height:100%;
+	    overflow-x:hidden;
+	    overflow-y:scroll;
+	}
+	
+  body{
+      overflow-y:scroll;
+  }
 	
 </style>
 
@@ -119,7 +126,7 @@ category:
     .categ-desc{
         position:relative;
         display:block;
-        text-align:center;
+        text-align:left;
         display:flex !important;align-items: center;
         justify-content: center;
         margin-top:5%;

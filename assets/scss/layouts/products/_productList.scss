@@ -301,6 +301,8 @@
                 line-height:26px;
                 border-top-left-radius: 8px;
                 position:relative;
+                font-size:13px;
+                
                 &:before{
                     z-index: -1;
                     content:'';
@@ -324,8 +326,36 @@
                     transform: rotateZ( 45deg );
                  
                 }
-
+ 
             }
+            .available-to-order{
+             width:150px;
+             background-color:#9d2e2e;
+             &:before{
+                background-color:#681e1e;
+             }
+             &:after{
+                background-color:#9d2e2e;
+             }
+            }
+            .on-order{
+                background-color:#ce595e;
+                &:before{
+                    background-color:#934043
+                }
+                &:after{
+                    background-color:#ce595e;
+                }
+            }
+            .in-stock{
+                background-color: #ff0000;
+                &:before{
+                background-color:#d62828; 
+                }
+                &:after{
+                    background-color: #ff0000;
+                }
+            }            
         }
 
 

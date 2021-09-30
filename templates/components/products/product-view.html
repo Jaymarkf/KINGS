@@ -29,7 +29,6 @@
 	}
 </style>
 <div class="productView" {{#if settings.data_tag_enabled}} data-event-type="product" data-entity-id="{{product.id}}" data-name="{{product.title}}" data-product-category="{{#each product.category}}{{#if @last}}{{this}}{{else}}{{this}}, {{/if}}{{/each}}" data-product-brand="{{product.brand.name}}" data-product-price="{{#if product.price.with_tax}}{{product.price.with_tax.value}}{{else}}{{product.price.without_tax.value}}{{/if}}" data-product-variant="single-product-option"{{/if}}>
-	
 	<div class="rev">
 		<section class="col-prod productview-images-custom" data-image-gallery>
 				{{!--
@@ -201,17 +200,29 @@
 				<div class="productview-quick-specs">
 					<h4 style="margin-top:5px;">Quick specs:</h4>
 					<ul>
+
+						
+						{{#each categories}}
+								{{#if is_active}}
+								{{assignVar "base" name}}
+								{{/if}}		
+						{{/each}}
+
+						{{#unless (getVar "base") '==' 'Bedding'}}
+
 						<li><strong>Type:</strong> {{#each categories}}
 								{{#if is_active}}
 								{{assignVar "base" name}}
 									{{#each children}}
 									{{#if is_active}}
-									 {{getVar "base"}} - {{name}}
+									 {{name}}
 									{{/if}}
 									{{/each}}
 								{{/if}}		
 							{{/each}}
 						</li>
+						{{/unless}}
+
 						{{#each product.custom_fields}}
 							{{#if name '===' "Height"}}
 								<li><strong>Height:</strong> {{value}} in</li>
@@ -221,6 +232,14 @@
 							{{/if}}
 							{{#if name '===' "Depth"}}
 								<li><strong>Depth:</strong> {{value}} in</li>
+							{{/if}}
+							{{#if (getVar "base") '==' 'Bedding'}}
+								{{#if name '==' 'Size'}}
+								<li><strong>Size:</strong> {{value}}</li>
+								{{/if}}
+								{{#if name '==' 'Comfort Level'}}
+								<li><strong>Comfort Level:</strong> {{value}}</li>
+								{{/if}}
 							{{/if}}
 						{{/each}}
 					</ul>

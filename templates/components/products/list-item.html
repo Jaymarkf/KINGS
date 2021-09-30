@@ -30,7 +30,10 @@
 			{{/each}}
 			{{#each custom_fields}}
 				{{#if name '==' 'Rebate IDs'}}
+					{{#if value '==' 0}}
+					{{else}}
 					<p>REBATE</p>
+					{{/if}}
 				{{/if}}
 		 	{{/each}}
 				
@@ -110,11 +113,18 @@
 			
 				<div class="list-action-container">	
 					{{#each custom_fields}}
+					{{#if name '===' 'Inv Flag'}}
+					<div class="store-deal-container">
+						<div class="red-ribbon {{lowercase (dashcase value)}}">{{value}}</div>
+					</div>
+					{{else}}
 						{{#if name '===' 'In-Store Deal'}}
-						<div class="store-deal-container">
-							<div class="red-ribbon">In-Store Deal</div>
-						</div>
+							<div class="store-deal-container">
+								<div class="red-ribbon in-store-deal">In-Store Deal</div>
+							</div>
 						{{/if}}
+					{{/if}}
+						
 					{{/each}}
 					<a class="btn lightbox-201911524199051 button button--small btn-ask" style="font-size:14px;" product_name="{{name}}" model="{{sku}}">
 						ASK FOR PRICE
@@ -137,11 +147,17 @@
 			<div class="listItem-actions">
 				<div class="list-action-container">
 					{{#each custom_fields}}
+					{{#if name '===' 'Inv Flag'}}
+					<div class="store-deal-container">
+						<div class="red-ribbon {{lowercase (dashcase value)}}">{{value}}</div>
+					</div>
+					{{else}}
 						{{#if name '===' 'In-Store Deal'}}
-						<div class="store-deal-container">
-							<div class="red-ribbon">In-Store Deal</div>
-						</div>
+							<div class="store-deal-container">
+								<div class="red-ribbon in-store-deal">In-Store Deal</div>
+							</div>
 						{{/if}}
+					{{/if}}
 					{{/each}}
 					{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
 						{{#if price}}
@@ -175,11 +191,17 @@
 				<div class="listItem-actions">
 					<div class="list-action-container">
 						{{#each custom_fields}}
+						{{#if name '===' 'Inv Flag'}}
+						<div class="store-deal-container">
+							<div class="red-ribbon {{lowercase (dashcase value)}}">{{value}}</div>
+						</div>
+						{{else}}
 							{{#if name '===' 'In-Store Deal'}}
-							<div class="store-deal-container">
-								<div class="red-ribbon">In-Store Deal</div>
-							</div>
+								<div class="store-deal-container">
+									<div class="red-ribbon in-store-deal">In-Store Deal</div>
+								</div>
 							{{/if}}
+						{{/if}}
 						{{/each}}
 						{{#or customer (if theme_settings.restrict_to_login '!==' true)}}
 						{{#if price}}
