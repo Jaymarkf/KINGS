@@ -1,11 +1,11 @@
 <div class="popular-products-container">
          <h1>Popular Products</h1>
 <ul class="tabs" data-tab>
-       <li class="tab">
+       <li class="tab  is-active">
               <a href="#tab-Refrigerators" class="tab-title" >REFRIGERATOR</a>
        </li>
-       <li class="tab is-active">
-              <a href="#tab-Cooking" class="tab-title"  role="tab" tabindex="0" aria-selected="true" controls="tab-related">COOKING</a>
+       <li class="tab">
+              <a href="#tab-Cooking" class="tab-title" >COOKING</a>
        </li>
 
        <li class="tab" >
@@ -29,13 +29,13 @@
 
  </ul>
      <div class="tabs-contents">
-              <div class="tab-content" id="tab-Refrigerators">
+              <div class="tab-content  is-active" id="tab-Refrigerators">
                      <div class="content-tab">
                             {{> components/page/home/popular-product-price category_namez="Refrigerators" products=products}}                       
                      </div>
               </div> 
        
-              <div class="tab-content is-active" id="tab-Cooking">
+              <div class="tab-content" id="tab-Cooking">
                         <div class="content-tab">
                                {{> components/page/home/popular-product-price category_namez="Cooking" products=products}}                       
                         </div>
