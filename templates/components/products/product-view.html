@@ -189,6 +189,39 @@
 					</span>
 				</div>
 				{{product.detail_messages}}
+				<div class="color-option-container">
+					<span class="title">Other Color(s)</span>
+					<div class="option-container-flex">
+							{{#each product.related_products}}
+								{{#inArray (pluck custom_fields 'name') 'Color'}}
+
+									<div class="prod-opt">
+										<a href="{{url}}" class="product-href">
+											<div class="prod-image-container">
+												{{> components/common/responsive-img
+													image=image
+													fallback_size=../theme_settings.productview_thumb_size
+													lazyload=../theme_settings.lazyload_mode
+												}}
+											</div>
+											<div class="prod-desc-container">
+												{{#each custom_fields}}
+													{{#if name '==' "Color"}}
+													<p class="color">{{value}}</p>
+													{{/if}}
+												{{/each}}
+												<p class="option-sku">{{sku}}</p>
+												<p class="option-price">{{price.sale_price_without_tax.formatted}}</p>
+												
+											</div>
+										</a>
+									</div>									
+								{{/inArray}}
+							{{/each}}
+
+					</div>
+				</div>
+			
 				<div class="product-features" style="border-bottom: 1px solid #cacaca;padding-bottom:10px;">
 					{{#eachIndex (split product.description '<!-- split -->')}}
 					{{#if index '==' '3' }} 
@@ -200,8 +233,6 @@
 				<div class="productview-quick-specs">
 					<h4 style="margin-top:5px;">Quick specs:</h4>
 					<ul>
-
-						
 						{{#each categories}}
 								{{#if is_active}}
 								{{assignVar "base" name}}
@@ -251,15 +282,21 @@
 		<div style="border:1px solid #dadada;">
 			<div class="productView-product">
 				<div class="product-badge" style="flex-wrap:wrap">
-					<div>
-						<img src="{{cdn 'img/badges/deal-match.png'}}" alt="">
-					</div>
+					<a href="/deal-match"class="deal-match">
+						
+							<img src="{{cdn 'img/badges/deal-match-icon.png'}}" alt="">
+							<span>Deal Match<br>Guarantee</span>
+						
+					</a>
 					{{#inArray product.category "Delivery Express"}}
-					<div><img src="{{cdn 'img/badges/delivery-express.png'}}" alt=""></div>
+					<a href="/delivery-express"class="deal-match">
+						<img src="{{cdn 'img/badges/delivery-express-icon.png'}}" alt="">
+						<span>Delivery<br>Express</span>
+					</a>
 					{{/inArray}}
 					<div class="apply-financing">
 						<div class="financing-div finance-btn" style="cursor:pointer">
-							<img src="{{cdn 'img/badges/financing.png'}}" alt="">
+							<img src="{{cdn 'img/badges/apply-for-financing-icon.png'}}" alt="">
 							<span>Apply for<br style="display:block !important;">Financing</span>
 						</div>
 					</div>
@@ -605,7 +642,9 @@
                                $('[rebate-idd]').attr('open' ,' ');
                                element.scrollIntoView({behavior: "smooth", block: "center", inline: "start"});
                         });
-                      
+		        $('.prod-opt').filter(function(){
+                        	return $(this).text().trim().length == 0;
+              		}).remove();
                 });
 
 

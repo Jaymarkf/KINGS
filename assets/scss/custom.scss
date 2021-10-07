@@ -1991,7 +1991,7 @@ p.outofStock_message {
 .productView-product{
     .product-badge{
         display:flex;
-        justify-content: space-around;
+        justify-content: space-between;
         align-items: center;
         img{
             height:100%;
@@ -2000,10 +2000,31 @@ p.outofStock_message {
             display:flex;
             align-items:center;
             span{
-                padding-left:5%;
-                font-size:1.2rem; line-height:1.3rem;
+                text-align: left;
+                font-family: sans-serif;
+                font-size: 12px;
+                font-weight: 800;
+                color: #698496;
+                margin-left: 4px;
+                line-height:1.3rem;
             }
         }
+
+        .deal-match{
+            display:flex;
+            align-items: center;
+            text-decoration: none;
+            span{
+                text-align: left;
+                font-family: sans-serif;
+                font-size: 12px;
+                font-weight: 800;
+                color: #698496;
+                margin-left: 4px;
+                line-height:1.3rem;
+            }
+        }
+
     }
 }
 
@@ -2023,9 +2044,11 @@ p.outofStock_message {
             }
         .product-badge{
             padding-bottom: 15px;
-            background-color: #e4e4e4;
-            padding-top: 2%;
-            padding-bottom: 2%;
+            /* background-color: #e4e4e4; */
+            img{
+                width:33%;
+            }
+            padding:2%;
             @media(max-width:1024px){
                 justify-content: start;
             }
@@ -4057,4 +4080,52 @@ div.product-slot{
 }
 .footer-info-col .accredited-img{
     margin-top:30px;
+}
+
+/*color options*/
+.color-option-container{
+    span.title{
+        font-weight:bolder;
+    }
+    .option-container-flex{
+        display:flex;
+        flex-wrap: wrap;
+        .prod-opt{
+            width:48%;
+            margin:1%;
+            .product-href{
+                display:flex;
+                align-items: center;
+                border:1px solid gray;
+                min-height:100%;
+                text-decoration: none;
+                .prod-image-container{
+                    width:27%;
+                    padding:2%;
+                }
+                .prod-desc-container{
+                    display:flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: center;
+                    width:74%;
+                    p{
+                        margin:0;
+                    }
+                    p.color{
+                        color:black;
+                    }
+                    p.option-sku{
+                        color:gray;
+                    }
+                    p.option-price{
+                        color:#1F4899;
+                        font-weight:bold;
+                    }
+                    
+                }
+            }
+        }
+
+    }
 }

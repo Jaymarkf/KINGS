@@ -11,6 +11,7 @@ blog:
     recent_posts:
         limit: 2
         summary: 200
+
 ---
 {{#partial "hero"}}
     
@@ -51,13 +52,17 @@ blog:
     .listItem-details{
 	    height:147px;
     }
-     /* overide the slick style */
-  
+     /* adjust the size of banner */
+    .static-pomotion-absolute .banner,.static-promotion-absolute .banner .featured-categories-banner, .featured-categories-banner p, .featured-categories-banner img{
+	    height:100%;
+    }
+    .featured-categories-banner p{
+	    margin:0;
+    }
 </style>
 
 
 <div class="main full">
-	
     {{> components/page/home/header-banner-slick}}
     {{> components/page/home/badge-feature}}
     
@@ -65,26 +70,22 @@ blog:
         <!-- <div class="col-md-7 col">
             <img class="lazyload res" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/lg-banner.png?t=1632275303&_gl=1*72dx34*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjI3NTI5Mi4xMjMuMS4xNjMyMjc1MzA1LjQ3" alt="">
         </div> -->
-
-        <div class="col-md-6 col col-left" data-aos="fade-up">
-	        <img id="bg-static" class="lazyload" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/gc-background.png?t=1630378203&_gl=1*6v9x1a*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjcyMzE0MS4xMzguMS4xNjMyNzIzOTM0LjMw" alt="">
-		<div class="static-promotion-absolute">
-			<div class="cols free">
-				<h1 class="title-static">KING'S GREAT BUYS PLUS</h1>
-				<p>EVANSVILLE</p>
-				<img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/free-ribbon.png?t=1632799911&_gl=1*z5c5k7*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjc5NzY3Ny4xNDEuMS4xNjMyNzk5MTU5LjQ1" class="lazyload" alt="">
-				<h1 class="product-name-title">2 Cooling Pillows Luxury Sheets Power Base Upgrade</h1>
-				<i>*when purchasing a mattress and box spring offer valid through <b>September 30</b></i>
-				<a href="/locations">GET DIRECTIONS</a>
-			</div>
-			<div class="cols bed">
-				<img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/mattress-image.png?t=1632799913&_gl=1*z5c5k7*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjc5NzY3Ny4xNDEuMS4xNjMyNzk5MTU5LjQ1" alt="" class="lazyload">
+        {{#if banners.top}}
+		<div class="col-md-6 col col-left" data-aos="fade-up">
+			<div class="static-promotion-absolute">
+				{{#each (limit banners.top_metadata 1)}}
+					<div class="banner" data-event-type="promotion" data-entity-id="{{this.id}}" data-name="{{this.banner-name}}" data-position="{{this.location}}" data-banner-id="{{this.banner-name}}">
+						<div class="featured-categories-banner"  data-event-type="promotion-click">
+							{{{this.content}}}
+						</div>
+					</div>
+				{{/each}}
 			</div>
 		</div>
-	</div>
-        <div class="col-md-6 flex-column col">
-            <a href="/maytag"><img class="lazyload mb-3" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/kings-banner-maytag.jpg" alt=""></a>
-            <a href="whirlpool"><img class="lazyload" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/theme_images/Kings_Banner-Whirlpool.png" alt=""></a>
+        {{/if}}
+        <div class="{{#if banners.top}}col-md-6 flex-column col{{else}}w-100 d-flex col{{/if}}">
+            <a href="/maytag" class="{{#unless banners.top}}pr-3{{/unless}}"><img class="lazyload mb-3" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/kings-banner-maytag.jpg" alt=""></a>
+            <a href="whirlpool" class="{{#unless banners.top}}pl-3{{/unless}}"><img class="lazyload" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/theme_images/Kings_Banner-Whirlpool.png" alt=""></a>
         </div>
     </div>
 
@@ -135,7 +136,7 @@ blog:
 
 $(document).ready(function() {
 
-	$('body').append('<div class="popup-container" style="margin-bottom:50px;bottom:20%;">'+
+	$('body').append('<div class="popup-container" style="bottom:6%;cursor:pointer;z-index:99999">'+
 		'<div class="pop">'+
 			'<img class="lazyload" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/popup-question-mark-icon.png?t=1632885982&_gl=1*mjue79*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjg4NTkzMi4xNDYuMS4xNjMyODg1OTg1Ljc." alt="">'+
 			'<div class="pop-blurb">'+
@@ -144,18 +145,18 @@ $(document).ready(function() {
 			'</div>'+
 		'</div>'+
 		'<div class="close">x</div>'+
-	'</div>'+
-	'<div class="popup-container">'+
-		'<div class="pop">'+
-			'<img class="lazyload" src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/popup-megaphone-icon.png?t=1632885983&_gl=1*mjue79*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjg4NTkzMi4xNDYuMS4xNjMyODg1OTg1Ljc." alt="">'+
-			'<div class="pop-blurb">'+
-				'<p>LIMITED TIME DEAL!</p>'+
-				'<span><b>FREE</b> Bundle with Mattress and Box Spring puchase!</span>'+
-				'<i>*Restrictions Apply</i>'+
-			'</div>'+
-		'</div>'+
-		'<div class="close">x</div>'+
 	'</div>');
+
+
+	$('.pop').on('click',function(){
+		$('#covid101').css('display','block');
+	});
+
+
+
+
+
+
 	var stickyname = '.header-bottom';
 	if($(stickyname).length > 0){
 		var stickyNavTop = $(stickyname).offset().top;
@@ -179,14 +180,21 @@ $(document).ready(function() {
 //  animate the popup 
   setTimeout(function(){
 	  var l = $('.body').width();
-	var left = l - 550;
+	var left = l - 505;
 	$('.popup-container').animate({left: left+'px'});
+	$('#tidio-chat-iframe').animate({paddingLeft:'100%'});
+	$('#tidio-chat-iframe').animate({paddingLeft:'100%'});
+	$('#tidio-chat-iframe').css('z-index','0');
+
+
 	
 	setTimeout(function(){
 		$('.popup-container').animate({left:'100%',opacity:'0'});
+		$('#tidio-chat-iframe').animate({paddingLeft:'0'});
+		$('#tidio-chat-iframe').css('z-index','99');
 	},10000);
 
-  },1000);
+  },2800);
 
 
   $('.popup-container').find('.close').click(function(){

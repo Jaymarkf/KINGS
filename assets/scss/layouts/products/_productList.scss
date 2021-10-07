@@ -285,6 +285,10 @@
         text-align:center;
         position:relative;
         padding-top:3rem;
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+        height:187px;
         .store-deal-container{
             position:absolute;
             left:-15px;
@@ -355,6 +359,15 @@
                 &:after{
                     background-color: #ff0000;
                 }
+            }
+            .on-its-way,.on-its-way\!{
+                background-color: #b84c3e;
+                &:before{
+                background-color:#913c31; 
+                }
+                &:after{
+                    background-color: #b84c3e;
+                } 
             }            
         }
 
