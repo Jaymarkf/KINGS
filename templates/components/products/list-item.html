@@ -21,6 +21,14 @@
 		{{/unless}}
 		<div class="star-container">
 			{{#each custom_fields}}
+				{{#if name '==' 'Rebate IDs'}}
+					{{#if value '==' 0}}
+					{{else}}
+					<p>REBATE</p>
+					{{/if}}
+				{{/if}}
+			{{/each}}
+			{{#each custom_fields}}
 				{{#if name '==' 'Energy Star'}}
 					<div class="img">
 						<img src="https://cdn11.bigcommerce.com/s-bek4r4rsz5/product_images/uploaded_images/energy-star.png?t=1632121689&_gl=1*1cl4wb9*_ga*NjI0NTc5OTk1LjE2MTgyMTQ3OTI.*_ga_WS2VZYPC6G*MTYzMjExNTQ3OC4xMTUuMS4xNjMyMTIxNjUzLjQ0" alt="" class="lazyload">
@@ -28,14 +36,7 @@
 				{{/if}}
 				
 			{{/each}}
-			{{#each custom_fields}}
-				{{#if name '==' 'Rebate IDs'}}
-					{{#if value '==' 0}}
-					{{else}}
-					<p>REBATE</p>
-					{{/if}}
-				{{/if}}
-		 	{{/each}}
+		
 				
 		</div>
 	</figure>

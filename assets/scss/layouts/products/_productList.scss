@@ -78,18 +78,17 @@
         height:51px;
 
         .img{
-            width:53px;
+            width:60px;
             img{
                 padding:0 !important;
             }
         }
         p{
-            font-size: 12px;
+            font-size: 14px;
             background-color:red;
             color:white;
-            margin-top:2px;
             padding:0px 5px;
-            margin-bottom:0;
+            margin-bottom:3px;
         }
         @media(max-width:1074px){
             top:47%;
@@ -280,7 +279,7 @@
     }
 
     .list-action-container{
-        padding:2rem;
+        padding:1rem;
         border:1px solid #e2e2e2;
         text-align:center;
         position:relative;
